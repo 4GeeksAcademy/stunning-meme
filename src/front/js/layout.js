@@ -4,11 +4,11 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 
-import { Home } from "./pages/Home.jsx";
-import { Login } from "./pages/Login.jsx";
-import { Signup } from "./pages/Signup.jsx";
-import { Private } from "./pages/Private.jsx";
-import { Error404 } from "./pages/Error404.jsx";
+import { Home } from "./pages/home.js";
+import { Login } from "./pages/login.js";
+import { Signup } from "./pages/signup.js";
+import { Private } from "./pages/Private.js";
+import { Error404 } from "./pages/Error404.js";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -54,7 +54,7 @@ const Layout = () => {
         }
 
         validateToken()
-    }, [token])
+    }, [])
 
     if(isLoading){
         return (
@@ -73,7 +73,7 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />
-                        {isValidToken
+                        {token
                         ? <Route element={<Private />} path="/private" />
                         : <Route path='*' element={<Error404 />} />}
                         <Route path='*' element={<Error404 />} />
